@@ -7,6 +7,9 @@ const menu = {
 
     link3_name: "JardimWeb",
     link3_url: "http://maverick.td.utfpr.edu.br/jardimweb",
+
+    link4_name: "Github",
+    link4_url: "https://github.com/epbsantos/",
 }
 
 export default menu;

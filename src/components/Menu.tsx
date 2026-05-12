@@ -10,6 +10,9 @@ function Menu() {
                 <li>
                     <a target="_blank" href={menu.link3_url}>{menu.link3_name}</a>
                 </li>
+                <li>
+                    <a href={menu.link4_url} target="_blank">{menu.link4_name}</a>
+                </li>
             </ul>
         </nav>
     )
