@@ -71,8 +71,8 @@ function App() {
 
   return (
     <>
-      <section>
-        <div>
+      <section className="sideMenu" >
+        <div >
           <h1> <Link to="/">{text.title}</Link> </h1>
           <h2>{text.subtitle}</h2>
         </div>
@@ -117,7 +117,7 @@ function App() {
         </div>
       </section>
 
-      <section>
+      <section className="ConteudoPrincipal">
         <Routes>
           <Route path="/front1" element={<Front1 />} />
           <Route path="/front1/html" element={<Html />} />

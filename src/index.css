@@ -3,7 +3,21 @@ nav {
 }
 
 section {
-  
+
   width: 50%;
   float: left;
+}
+
+.sideMenu {
+  width: 25%;
+  height: 100vh;
+  float: left;
+  background-color: rgba(64, 77, 77, 0.123);
+}
+
+
+
+.ConteudoPrincipal {
+  width: 75%;
+  padding: 32px 0px;
 }
