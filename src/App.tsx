@@ -71,75 +71,79 @@ function App() {
 
   return (
     <>
-      <section className="sideMenu" >
-        <div >
-          <h1> <Link to="/">{text.title}</Link> </h1>
-          <h2>{text.subtitle}</h2>
-        </div>
+      <section className="container">
+        <section className="sideMenu" >
+          <div >
+            <img src="/img/logoUTFPR.png" alt="Logo UTFPR" style={{ width: '300px', maxWidth: '100%', paddingBottom: '16px' }} />
 
-        <Menu />
-
-        <div className="disciplines">
-          <div className="discipline front1">
-            <h3> <Link to="front1">front1</Link> </h3>
-            <ul>
-              <li><Link to="front1/html">html</Link></li>
-              <li><Link to="front1/css">css</Link></li>
-              <li><Link to="front1/bootstrap">bootstrap</Link></li>
-              <li><Link to="front1/img">edição de imagem</Link></li>
-            </ul>
+            <h1> <Link to="/">{text.title}</Link> </h1>
+            <h2>{text.subtitle}</h2>
           </div>
 
-          <div className="discipline front2">
-            <h3><Link to="front2">front2</Link></h3>
-            <ul>
-              <li><Link to="front2/js">javascript</Link></li>
-              <li><Link to="front2/gsap">gsap</Link></li>
-              <li><Link to="front2/react">react</Link></li>
-            </ul>
+          <Menu />
+
+          <div className="disciplines">
+            <div className="discipline front1">
+              <h3> <Link to="front1">front1</Link> </h3>
+              <ul>
+                <li><Link to="front1/html">html</Link></li>
+                <li><Link to="front1/css">css</Link></li>
+                <li><Link to="front1/bootstrap">bootstrap</Link></li>
+                <li><Link to="front1/img">edição de imagem</Link></li>
+              </ul>
+            </div>
+
+            <div className="discipline front2">
+              <h3><Link to="front2">front2</Link></h3>
+              <ul>
+                <li><Link to="front2/js">javascript</Link></li>
+                <li><Link to="front2/gsap">gsap</Link></li>
+                <li><Link to="front2/react">react</Link></li>
+              </ul>
+            </div>
+
+            <div className="discipline design">
+              <h3><Link to="design">design</Link></h3>
+              <ul>
+                <li><Link to="design/figma">figma</Link></li>
+                <li><Link to="design/pencil">pencil</Link></li>
+              </ul>
+            </div>
+
+            <div className="discipline ihc">
+              <h3><Link to="ihc">ihc</Link></h3>
+              <ul>
+                <li><Link to="ihc/teoria">teoria de interação humano computador</Link></li>
+                <li><Link to="ihc/teste">teste de usabilidade</Link></li>
+              </ul>
+            </div>
           </div>
+        </section>
 
-          <div className="discipline design">
-            <h3><Link to="design">design</Link></h3>
-            <ul>
-              <li><Link to="design/figma">figma</Link></li>
-              <li><Link to="design/pencil">pencil</Link></li>
-            </ul>
-          </div>
+        <section className="ConteudoPrincipal">
+          <Routes>
+            <Route path="/front1" element={<Front1 />} />
+            <Route path="/front1/html" element={<Html />} />
+            <Route path="/front1/css" element={<Css />} />
+            <Route path="/front1/img" element={<Imagem />} />
+            <Route path="/front1/bootstrap" element={<Bootstrap />} />
 
-          <div className="discipline ihc">
-            <h3><Link to="ihc">ihc</Link></h3>
-            <ul>
-              <li><Link to="ihc/teoria">teoria de interação humano computador</Link></li>
-              <li><Link to="ihc/teste">teste de usabilidade</Link></li>
-            </ul>
-          </div>
-        </div>
-      </section>
+            <Route path="/front2" element={<Front2 />} />
+            <Route path="/front2/js" element={<Javascript />} />
+            <Route path="/front2/gsap" element={<Gsap />} />
+            <Route path="/front2/react" element={<React />} />
 
-      <section className="ConteudoPrincipal">
-        <Routes>
-          <Route path="/front1" element={<Front1 />} />
-          <Route path="/front1/html" element={<Html />} />
-          <Route path="/front1/css" element={<Css />} />
-          <Route path="/front1/img" element={<Imagem />} />
-          <Route path="/front1/bootstrap" element={<Bootstrap />} />
+            <Route path="/design" element={<Design />} />
+            <Route path="/design/figma" element={<Figma />} />
+            <Route path="/design/pencil" element={<Pencil />} />
 
-          <Route path="/front2" element={<Front2 />} />
-          <Route path="/front2/js" element={<Javascript />} />
-          <Route path="/front2/gsap" element={<Gsap />} />
-          <Route path="/front2/react" element={<React />} />
-
-          <Route path="/design" element={<Design />} />
-          <Route path="/design/figma" element={<Figma />} />
-          <Route path="/design/pencil" element={<Pencil />} />
-
-          <Route path="/ihc" element={<Ihc />} />
-          <Route path="/ihc/teoria" element={<Teoria />} />
-          <Route path="/ihc/teste" element={<Teste />} />
+            <Route path="/ihc" element={<Ihc />} />
+            <Route path="/ihc/teoria" element={<Teoria />} />
+            <Route path="/ihc/teste" element={<Teste />} />
 
 
-        </Routes>
+          </Routes>
+        </section>
       </section>
     </>
   );
