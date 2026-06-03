@@ -21,7 +21,7 @@ import Design from "./components/design/Design.tsx";
 import Figma from "./components/design/Figma.tsx";
 import Pencil from "./components/design/Pencil.tsx";
 import Ihc from "./components/ihc/Ihc.tsx";
-import Teoria from "./components/ihc/teoria.tsx";
+import Teoria from "./components/ihc/Teoria.tsx";
 import Teste from "./components/ihc/Teste.tsx";
 
 
