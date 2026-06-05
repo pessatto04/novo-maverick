@@ -23,6 +23,7 @@ import Pencil from "./components/design/Pencil.tsx";
 import Ihc from "./components/ihc/Ihc.tsx";
 import Teoria from "./components/ihc/Teoria.tsx";
 import Teste from "./components/ihc/Teste.tsx";
+import Heuristica from "./components/ihc/Heuristica.tsx";
 
 
 
@@ -113,8 +114,9 @@ function App() {
             <div className="discipline ihc">
               <h3><Link to="ihc">ihc</Link></h3>
               <ul>
-                <li><Link to="ihc/teoria">teoria de interação humano computador</Link></li>
-                <li><Link to="ihc/teste">teste de usabilidade</Link></li>
+                <li><Link to="ihc/teoria">Teoria de interação humano computador</Link></li>
+                <li><Link to="ihc/teste">Teste de usabilidade</Link></li>
+                <li><Link to="ihc/heuristica">Avaliação heurística</Link></li>
               </ul>
             </div>
           </div>
@@ -140,6 +142,7 @@ function App() {
             <Route path="/ihc" element={<Ihc />} />
             <Route path="/ihc/teoria" element={<Teoria />} />
             <Route path="/ihc/teste" element={<Teste />} />
+            <Route path="/ihc/heuristica" element={<Heuristica />} />
 
 
           </Routes>
