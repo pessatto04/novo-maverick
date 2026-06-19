@@ -105,13 +105,13 @@ function App() {
 
           <div className="disciplines">
             <div className="discipline slides">
-              <h3> <Link to="slides">Slides</Link> </h3>
+              <h3 className="HoverCor"> <Link to="slides">Slides</Link> </h3>
             </div>
           </div>
 
           <div className="disciplines">
             <div className="discipline front1">
-              <h3> <Link to="front1">Front 1</Link> </h3>
+              <h3 className="HoverCor"> <Link to="front1">Front 1</Link> </h3>
               <ul>
                 <li className="HoverCor"><Link to="front1/html">HTML</Link></li>
                 <li className="HoverCor"><Link to="front1/css">CSS</Link></li>
@@ -122,28 +122,28 @@ function App() {
             </div>
 
             <div className="discipline front2">
-              <h3><Link to="front2">Front 2</Link></h3>
+              <h3 className="HoverCor"><Link to="front2">Front 2</Link></h3>
               <ul>
-                <li><Link to="front2/js">JavaScript</Link></li>
-                <li><Link to="front2/gsap">GSAP</Link></li>
-                <li><Link to="front2/react">React</Link></li>
+                <li className="HoverCor"><Link to="front2/js">JavaScript</Link></li>
+                <li className="HoverCor"><Link to="front2/gsap">GSAP</Link></li>
+                <li className="HoverCor"><Link to="front2/react">React</Link></li>
               </ul>
             </div>
 
             <div className="discipline design">
-              <h3><Link to="design">Design Gráfico</Link></h3>
+              <h3 className="HoverCor"><Link to="design">Design Gráfico</Link></h3>
               <ul>
-                <li><Link to="design/figma">Figma</Link></li>
-                <li><Link to="design/pencil">Pencil</Link></li>
+                <li className="HoverCor"><Link to="design/figma">Figma</Link></li>
+                <li className="HoverCor"><Link to="design/pencil">Pencil</Link></li>
               </ul>
             </div>
 
             <div className="discipline ihc">
-              <h3><Link to="ihc">IHC</Link></h3>
+              <h3 className="HoverCor"><Link to="ihc">IHC</Link></h3>
               <ul>
-                <li><Link to="ihc/teoria">Teoria de interação humano computador</Link></li>
-                <li><Link to="ihc/teste">Teste de usabilidade</Link></li>
-                <li><Link to="ihc/heuristica">Avaliação heurística</Link></li>
+                <li className="HoverCor"><Link to="ihc/teoria">Teoria de interação humano computador</Link></li>
+                <li className="HoverCor"><Link to="ihc/teste">Teste de usabilidade</Link></li>
+                <li className="HoverCor"><Link to="ihc/heuristica">Avaliação heurística</Link></li>
               </ul>
             </div>
           </div>
