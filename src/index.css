@@ -30,9 +30,19 @@ section {
   gap: 1rem;
 }
 
-.container, .sideMenu, .ConteudoPrincipal, section, a, h1, h2, h3, ul, li {
+.container,
+.sideMenu,
+.ConteudoPrincipal,
+section,
+a,
+h1,
+h2,
+h3,
+ul,
+li {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, text-shadow 0.3s ease;
 }
+
 /* ---------------- TEMA CLARO ---------------- */
 .container.claro {
   background-color: #ffffff;
@@ -47,6 +57,7 @@ section {
 .container.claro a {
   color: #0066cc;
 }
+
 /* ---------------- TEMA ESCURO ---------------- */
 .container.escuro {
   background-color: #121212;
@@ -65,4 +76,15 @@ section {
 .container.escuro .sideMenu img,
 .container.maverick .sideMenu img {
   filter: brightness(0) invert(1);
+}
+
+.HoverCor:hover {
+  background-color: #4845453f;
+  width: 100%;
+  color: black;
+}
+
+.HoverCor {
+  padding: 4px;
+  border-radius: 4px;
 }

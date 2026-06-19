@@ -113,11 +113,11 @@ function App() {
             <div className="discipline front1">
               <h3> <Link to="front1">Front 1</Link> </h3>
               <ul>
-                <li><Link to="front1/html">HTML</Link></li>
-                <li><Link to="front1/css">CSS</Link></li>
-                <li><Link to="front1/bootstrap">Bootstrap</Link></li>
-                <li><Link to="front1/tailwind">Tailwind CSS</Link></li>
-                <li><Link to="front1/img">Edição de imagem</Link></li>
+                <li className="HoverCor"><Link to="front1/html">HTML</Link></li>
+                <li className="HoverCor"><Link to="front1/css">CSS</Link></li>
+                <li className="HoverCor"><Link to="front1/bootstrap">Bootstrap</Link></li>
+                <li className="HoverCor"><Link to="front1/tailwind">Tailwind CSS</Link></li>
+                <li className="HoverCor"><Link to="front1/img">Edição de imagem</Link></li>
               </ul>
             </div>
 
@@ -152,7 +152,7 @@ function App() {
         <section className="ConteudoPrincipal">
           <Routes>
             <Route path="/slides" element={<Slides />} />
-            
+
             <Route path="/front1" element={<Front1 />} />
             <Route path="/front1/html" element={<Html />} />
             <Route path="/front1/css" element={<Css />} />
@@ -173,7 +173,7 @@ function App() {
             <Route path="/ihc/teoria" element={<Teoria />} />
             <Route path="/ihc/teste" element={<Teste />} />
             <Route path="/ihc/heuristica" element={<Heuristica />} />
-            
+
           </Routes>
         </section>
       </section>
