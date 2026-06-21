@@ -47,7 +47,7 @@ function ReactComponent() {
           <strong>Fluxo de Dados Unidirecional:</strong> Os dados fluem de forma organizada dos componentes pais para os filhos, tornando o comportamento previsível.
         </li>
         <li>
-          <strong>JSX:</strong> Combina JavaScript e HTML in uma sintaxe simples e intuitiva para criar as interfaces.
+          <strong>JSX:</strong> Combina JavaScript e HTML em uma sintaxe simples e intuitiva para criar as interfaces.
         </li>
       </ul>
     </div>

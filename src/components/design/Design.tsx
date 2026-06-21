@@ -52,7 +52,7 @@ function Design() {
         <li>Capacitar os alunos a utilizar ferramentas de prototipagem e design gráfico para criar projetos visuais.</li>
         <li>Compreender e aplicar os princípios fundamentais da comunicação visual e do design responsivo em projetos práticos de layout.</li>
         <li>Manipular imagens digitais controlando suas dimensões, resoluções, formatos e ajustes fundamentais como brilho e contraste.</li>
-        <li>Desenvolver interfaces e protótipos de layouts criativos e inovadores para aplicações móveis e desktop, combinando de forma harmônica tipografia, cores e elements gráficos.</li>
+        <li>Desenvolver interfaces e protótipos de layouts criativos e inovadores para aplicações móveis e desktop, combinando de forma harmônica tipografia, cores e elementos gráficos.</li>
       </ul>
 
       <h4>Conteúdos:</h4>
