@@ -1,15 +1,13 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
-import { Link, Routes, Route, useLocation } from "react-router";
+import { Routes, Route } from "react-router";
+import { useState, useCallback, useEffect } from 'react';
 
-import Menu from "./components/Menu";
-import text from "./constants/text";
+import Sidebar from "./components/Sidebar";
 
-import Slides from "./components/Slides";
-
-import Front1 from './components/front1/Front1.tsx'
-import Html from './components/front1/Html.tsx'
+import Front1 from './components/front1/Front1.tsx';
+import Html from './components/front1/Html.tsx';
 import Css from "./components/front1/Css.tsx";
 import Imagem from "./components/front1/Imagem.tsx";
 import Bootstrap from "./components/front1/Bootstrap.tsx";
@@ -23,75 +21,32 @@ import ReactPage from "./components/front2/React.tsx";
 import Design from "./components/design/Design.tsx";
 import Figma from "./components/design/Figma.tsx";
 import Pencil from "./components/design/Pencil.tsx";
+import Gimp from "./components/design/Gimp.tsx";
 import Ihc from "./components/ihc/Ihc.tsx";
 import Teoria from "./components/ihc/Teoria.tsx";
 import Teste from "./components/ihc/Teste.tsx";
 import Heuristica from "./components/ihc/Heuristica.tsx";
+import Sobre from "./components/Sobre.tsx";
+import Slides from "./components/Slides.tsx";
 
-import { useState, useEffect } from 'react';
-
-
+type Theme = 'claro' | 'escuro';
 
 function App() {
-  const [tema, setTema] = useState<'claro' | 'escuro' | 'maverick'>('claro');
+  const [tema, setTema] = useState<Theme>('claro');
+  const toggleTema = useCallback(() => {
+    setTema(t => t === 'claro' ? 'escuro' : 'claro');
+  }, []);
   const [visible, setVisible] = useState(false);
 
-  // ---- NOVO: busca/filtro no menu lateral ----
-  const [busca, setBusca] = useState('');
-  const filtroAtivo = busca.trim().toLowerCase();
-  const bate = (texto: string) => texto.toLowerCase().includes(filtroAtivo);
-
-  // ---- NOVO: detectar página ativa no menu ----
-  const location = useLocation();
-  const isActive = (path: string) => location.pathname === `/${path}` || location.pathname === path;
-
-  useGSAP(() => {
-    const h1 = new SplitText("h1", {
-      type: "chars, words",
-    });
-
-    const h2 = new SplitText("h2", {
-      type: "chars, words",
-    });
-
-    gsap.from(h1.chars, {
-      yPercent: 100,
-      duration: 1.8,
-      ease: "elastic",
-      stagger: 0.06,
-    });
-
-    gsap.from(h2.chars, {
-      yPercent: 100,
-      duration: 1.2,
-      ease: "elastic",
-      stagger: 0.06,
-    });
-
-    const tl = gsap.timeline();
-
-    tl.from("nav", {
-      x: -350,
-      ease: "elastic",
-      duration: 2,
-    });
-
-    tl.from(".discipline", {
-      x: -350,
-      ease: "elastic",
-      duration: 2,
-      stagger: 0.5
-    });
-
-  });
   useEffect(() => {
-    const handleScroll = () => {
-      setVisible(window.scrollY > 20);
-    };
 
+    const handleScroll = () => {
+      setVisible(document.documentElement.scrollTop > 20);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   useEffect(() => {
     gsap.to("#back-to-top", {
       opacity: visible ? 1 : 0,
@@ -100,140 +55,108 @@ function App() {
       ease: "power2.out",
     });
   }, [visible]);
+
   const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  useGSAP(() => {
+    gsap.registerPlugin(SplitText);
+
+    const h1el = document.querySelector('.mv-site-title');
+    const h2el = document.querySelector('.mv-site-subtitle');
+
+    if (h1el) {
+      const h1split = new SplitText(h1el, { type: "chars,words" });
+      gsap.from(h1split.chars, {
+        yPercent: 120,
+        duration: 1.5,
+        ease: "elastic.out(1, 0.5)",
+        stagger: 0.05,
+      });
+    }
+
+    if (h2el) {
+      const h2split = new SplitText(h2el, { type: "chars,words" });
+      gsap.from(h2split.chars, {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.03,
+        delay: 0.6,
+      });
+    }
+
+    const tl = gsap.timeline({ delay: 0.1 });
+
+    tl.from(".mv-sidebar", {
+      x: -var_sidebarWidth,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    tl.from(".mv-discipline", {
+      x: -40,
+      opacity: 0,
+      duration: 0.6,
+      ease: "power2.out",
+      stagger: 0.12,
+    }, "-=0.4");
+
+    tl.from(".mv-content", {
+      opacity: 0,
+      x: 40,
+      duration: 0.8,
+      ease: "power3.out",
+    }, "-=0.6");
+  });
+
   return (
-    <>
-      <section className={`container ${tema}`}>
+    <div className={`mv-layout ${tema}`}>
+      <Sidebar tema={tema} toggleTema={toggleTema} />
 
-        <section className="sideMenu" >
-          <div>
-            <img src="/img/logoUTFPR.png" alt="Logo UTFPR" style={{ width: '300px', maxWidth: '100%', paddingBottom: '16px' }} />
+      {/* ── MAIN CONTENT ── */}
+      <main className="mv-content">
+        <Routes>
+          <Route path="/" element={<Sobre />} />
+          <Route path="/slides" element={<Slides />} />
 
-            <h1> <Link to="/">{text.title}</Link> </h1>
-            <h2>{text.subtitle}</h2>
+          <Route path="/front1" element={<Front1 />} />
+          <Route path="/front1/html" element={<Html />} />
+          <Route path="/front1/css" element={<Css />} />
+          <Route path="/front1/img" element={<Imagem />} />
+          <Route path="/front1/bootstrap" element={<Bootstrap />} />
+          <Route path="/front1/tailwind" element={<Tailwind />} />
 
-            <div style={{ marginTop: '16px', marginBottom: '16px' }}>
-              <label htmlFor="theme-select" style={{ display: 'block', fontSize: '0.9rem', marginBottom: '4px', fontWeight: 'bold' }}>
-                Mudar Visual:
-              </label>
-              <select
-                id="theme-select"
-                value={tema}
-                onChange={(e) => setTema(e.target.value as any)}
-                style={{ padding: '6px', width: '100%', borderRadius: '4px', cursor: 'pointer' }}
-              >
-                <option value="claro">Modo Claro</option>
-                <option value="escuro">Modo Escuro</option>
+          <Route path="/front2" element={<Front2 />} />
+          <Route path="/front2/js" element={<Javascript />} />
+          <Route path="/front2/gsap" element={<Gsap />} />
+          <Route path="/front2/react" element={<ReactPage />} />
 
-              </select>
-            </div>
-          </div>
+          <Route path="/design" element={<Design />} />
+          <Route path="/design/figma" element={<Figma />} />
+          <Route path="/design/pencil" element={<Pencil />} />
+          <Route path="/design/gimp" element={<Gimp />} />
 
-          <Menu />
-
-          {/* NOVO: campo de busca/filtro do menu */}
-          <div style={{ marginTop: '16px', marginBottom: '8px' }}>
-            <input
-              type="text"
-              placeholder="Buscar disciplina..."
-              value={busca}
-              onChange={(e) => setBusca(e.target.value)}
-              style={{ padding: '6px', width: '100%', borderRadius: '4px' }}
-            />
-          </div>
-
-          <div className="disciplines" style={{ display: bate('slides') ? 'block' : 'none' }}>
-            <div className="discipline slides">
-              <h3 className={`HoverCor ${isActive('slides') ? 'active' : ''}`}> <Link to="slides">Slides</Link> </h3>
-            </div>
-          </div>
-
-          <div
-            className="disciplines"
-            style={{
-              display: ['front1', 'html', 'css', 'bootstrap', 'tailwind', 'imagem'].some(bate) ? 'block' : 'none'
-            }}
-          >
-            <div className="discipline front1">
-              <h3 className={`HoverCor ${isActive('front1') ? 'active' : ''}`}> <Link to="front1">Front 1</Link> </h3>
-              <ul>
-                <li className={`HoverCor ${isActive('front1/html') ? 'active' : ''}`}><Link to="front1/html">HTML</Link></li>
-                <li className={`HoverCor ${isActive('front1/css') ? 'active' : ''}`}><Link to="front1/css">CSS</Link></li>
-                <li className={`HoverCor ${isActive('front1/bootstrap') ? 'active' : ''}`}><Link to="front1/bootstrap">Bootstrap</Link></li>
-                <li className={`HoverCor ${isActive('front1/tailwind') ? 'active' : ''}`}><Link to="front1/tailwind">Tailwind CSS</Link></li>
-                <li className={`HoverCor ${isActive('front1/img') ? 'active' : ''}`}><Link to="front1/img">Edição de imagem</Link></li>
-              </ul>
-            </div>
-
-            <div className="discipline front2" style={{ display: ['front2', 'javascript', 'js', 'gsap', 'react'].some(bate) ? 'block' : 'none' }}>
-              <h3 className={`HoverCor ${isActive('front2') ? 'active' : ''}`}><Link to="front2">Front 2</Link></h3>
-              <ul>
-                <li className={`HoverCor ${isActive('front2/js') ? 'active' : ''}`}><Link to="front2/js">JavaScript</Link></li>
-                <li className={`HoverCor ${isActive('front2/gsap') ? 'active' : ''}`}><Link to="front2/gsap">GSAP</Link></li>
-                <li className={`HoverCor ${isActive('front2/react') ? 'active' : ''}`}><Link to="front2/react">React</Link></li>
-              </ul>
-            </div>
-
-            <div className="discipline design" style={{ display: ['design', 'figma', 'pencil'].some(bate) ? 'block' : 'none' }}>
-              <h3 className={`HoverCor ${isActive('design') ? 'active' : ''}`}><Link to="design">Design Gráfico</Link></h3>
-              <ul>
-                <li className={`HoverCor ${isActive('design/figma') ? 'active' : ''}`}><Link to="design/figma">Figma</Link></li>
-                <li className={`HoverCor ${isActive('design/pencil') ? 'active' : ''}`}><Link to="design/pencil">Pencil</Link></li>
-              </ul>
-            </div>
-
-
-            <div className="discipline ihc" style={{ display: ['ihc', 'teoria', 'teste', 'heuristica', 'usabilidade'].some(bate) ? 'block' : 'none' }}>
-              <h3 className={`HoverCor ${isActive('ihc') ? 'active' : ''}`}><Link to="ihc">IHC</Link></h3>
-              <ul>
-                <li className={`HoverCor ${isActive('ihc/teoria') ? 'active' : ''}`}><Link to="ihc/teoria">Teoria de interação humano computador</Link></li>
-                <li className={`HoverCor ${isActive('ihc/teste') ? 'active' : ''}`}><Link to="ihc/teste">Teste de usabilidade</Link></li>
-                <li className={`HoverCor ${isActive('ihc/heuristica') ? 'active' : ''}`}><Link to="ihc/heuristica">Avaliação heurística</Link></li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section className="ConteudoPrincipal">
-          <Routes>
-            <Route path="/slides" element={<Slides />} />
-
-            <Route path="/front1" element={<Front1 />} />
-            <Route path="/front1/html" element={<Html />} />
-            <Route path="/front1/css" element={<Css />} />
-            <Route path="/front1/img" element={<Imagem />} />
-            <Route path="/front1/bootstrap" element={<Bootstrap />} />
-            <Route path="/front1/tailwind" element={<Tailwind />} />
-
-            <Route path="/front2" element={<Front2 />} />
-            <Route path="/front2/js" element={<Javascript />} />
-            <Route path="/front2/gsap" element={<Gsap />} />
-            <Route path="/front2/react" element={<ReactPage />} />
-
-            <Route path="/design" element={<Design />} />
-            <Route path="/design/figma" element={<Figma />} />
-            <Route path="/design/pencil" element={<Pencil />} />
-
-            <Route path="/ihc" element={<Ihc />} />
-            <Route path="/ihc/teoria" element={<Teoria />} />
-            <Route path="/ihc/teste" element={<Teste />} />
-            <Route path="/ihc/heuristica" element={<Heuristica />} />
-
-          </Routes>
-        </section>
-      </section>
+          <Route path="/ihc" element={<Ihc />} />
+          <Route path="/ihc/teoria" element={<Teoria />} />
+          <Route path="/ihc/teste" element={<Teste />} />
+          <Route path="/ihc/heuristica" element={<Heuristica />} />
+        </Routes>
+      </main>
       <button
         id="back-to-top"
         onClick={handleClick}
-        style={{ opacity: 0, pointerEvents: "auto" }}
+        style={{ opacity: 1, pointerEvents: "none" }}
       >
         Inicio
       </button>
-    </>
+    </div>
   );
 }
+
+const var_sidebarWidth = 280;
 
 export default App;

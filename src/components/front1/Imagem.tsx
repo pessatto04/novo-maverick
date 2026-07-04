@@ -1,26 +1,34 @@
+import { usePageAnimation } from '../../hooks/usePageAnimation';
+
 function Img() {
+  const ref = usePageAnimation({ type: 'fadeUp', selector: '.anim', stagger: 0.1 });
+
   return (
-    <>
-      <h3>Edição de Imagens</h3>
-      <img src="../../public/img/Gimp2.png" style={{ width: '300px', maxWidth: '100%' }} />
-      <p>
-        A edição de imagens é o processo de modificar, otimizar e transformar fotografias e gráficos 
-        digitais. No contexto do desenvolvimento web e de interfaces, ela é fundamental para ajustar 
-        resoluções, tratar imagens e criar ativos gráficos que compõem o design visual de uma aplicação. 
-        Para essa finalidade, utilizamos o <strong>GIMP (GNU Image Manipulation Program)</strong>, um 
-        editor de gráficos rasterizados gratuito e de código aberto (<strong>open-source</strong>). Ele é 
-        amplamente utilizado para retoque de fotos, composição de imagens e criação de texturas, 
-        destacando-se na comunidade acadêmica e profissional como uma das principais e mais robustas 
-        alternativas ao Adobe Photoshop. Saiba mais no{' '}
-        <a 
-          href="https://www.gimp.org/" 
-          target="_blank" 
-          rel="noopener noreferrer"
-        >
-          site oficial do GIMP
-        </a>.
-      </p>
-    </>
+    <div ref={ref} className="mv-page-section">
+      <div className="anim">
+        <h3><i className="bi bi-image me-2 text-info" />Edição de Imagens</h3>
+        <span className="badge bg-info text-dark fs-6 mb-3 px-3 py-2 rounded-pill">Tratamento Gráfico</span>
+      </div>
+
+      <div className="row g-4 align-items-center mt-2">
+        <div className="col-lg-5 anim">
+          <div className="card mv-card border-0 shadow-sm overflow-hidden">
+            <img src="/img/Gimp2.png" alt="Interface do GIMP" className="img-fluid" />
+          </div>
+        </div>
+
+        <div className="col-lg-7 anim">
+          <h5 className="fw-bold mb-3">Otimização de Ativos Visuais com o GIMP</h5>
+          <p className="text-secondary">
+            A edição de imagem é uma etapa crucial no desenvolvimento web. Ela permite adequar resoluções, recortar layouts, comprimir formatos para melhor performance de carregamento e tratar elementos visuais.
+          </p>
+          <p className="text-secondary">
+            Nessa disciplina, utilizamos o <strong>GIMP (GNU Image Manipulation Program)</strong>, um poderoso editor de imagens rasterizadas open-source e gratuito. Ele oferece recursos profissionais para retoques fotográficos, composições e exportação de ativos otimizados para web (PNG, WEBP, etc.), sendo a principal alternativa livre ao Adobe Photoshop.
+          </p>
+          {/* removi o link do site oficial aqui pois já tem na pagina do gimp em específico, assim deixando o código mais organizado e também evitar 2 links direcionando para o mesmo local*/}
+        </div>
+      </div>
+    </div>
   );
 }
 
