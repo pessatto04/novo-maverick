@@ -25,15 +25,7 @@ function Img() {
           <p className="text-secondary">
             Nessa disciplina, utilizamos o <strong>GIMP (GNU Image Manipulation Program)</strong>, um poderoso editor de imagens rasterizadas open-source e gratuito. Ele oferece recursos profissionais para retoques fotográficos, composições e exportação de ativos otimizados para web (PNG, WEBP, etc.), sendo a principal alternativa livre ao Adobe Photoshop.
           </p>
-          <a
-            href="https://www.gimp.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-outline-info text-dark d-inline-flex align-items-center gap-2 mt-2"
-          >
-            Visitar site oficial do GIMP
-            <i className="bi bi-box-arrow-up-right" />
-          </a>
+          {/* removi o link do site oficial aqui pois já tem na pagina do gimp em específico, assim deixando o código mais organizado e também evitar 2 links direcionando para o mesmo local*/}
         </div>
       </div>
     </div>

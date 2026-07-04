@@ -21,6 +21,7 @@ import ReactPage from "./components/front2/React.tsx";
 import Design from "./components/design/Design.tsx";
 import Figma from "./components/design/Figma.tsx";
 import Pencil from "./components/design/Pencil.tsx";
+import Gimp from "./components/design/Gimp.tsx";
 import Ihc from "./components/ihc/Ihc.tsx";
 import Teoria from "./components/ihc/Teoria.tsx";
 import Teste from "./components/ihc/Teste.tsx";
@@ -137,6 +138,7 @@ function App() {
           <Route path="/design" element={<Design />} />
           <Route path="/design/figma" element={<Figma />} />
           <Route path="/design/pencil" element={<Pencil />} />
+          <Route path="/design/gimp" element={<Gimp />} />
 
           <Route path="/ihc" element={<Ihc />} />
           <Route path="/ihc/teoria" element={<Teoria />} />

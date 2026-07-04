@@ -59,6 +59,7 @@ export default function Sidebar({ tema, toggleTema }: SidebarProps) {
           <ul>
             <li><Link to="design/figma"><i className="bi bi-vector-pen me-1" />Figma</Link></li>
             <li><Link to="design/pencil"><i className="bi bi-pencil me-1" />Pencil</Link></li>
+            <li><Link to="design/gimp"><i className="bi bi-brush me-1" />GIMP</Link></li>
           </ul>
         </div>
 
